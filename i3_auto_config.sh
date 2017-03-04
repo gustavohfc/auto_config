@@ -215,3 +215,11 @@ set $down j
 set $left h
 set $right l
 ' >> $config
+
+# Abre o dmenu com a tecla do windows
+echo '
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+bindsym Mod4+d exec --no-startup-id i3-dmenu-desktop
+' >> $config
