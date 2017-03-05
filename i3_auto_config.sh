@@ -224,6 +224,11 @@ echo '
 bindsym Mod4+d exec --no-startup-id i3-dmenu-desktop
 ' >> $config
 
+# Aplica o wallpaper
+cp wallpaper.jpg ~/.i3/
+echo 'exec_always feh --bg-scale ~/.i3/wallpaper.jpg' >> $config
+
+
 # Seleciona os nomes dos workspaces
 if [ "$maquina" == "estagio" ]; then
   echo '
