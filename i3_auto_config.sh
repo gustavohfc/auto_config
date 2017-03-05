@@ -185,9 +185,9 @@ bindsym Mod1+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+####bar {
+####        status_command i3status
+####}
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
@@ -198,7 +198,7 @@ bar {
 #
 # Please remove the following exec line:
 #######################################################################
-exec i3-config-wizard
+####exec i3-config-wizard
 ' >> $config
 
 
@@ -305,3 +305,33 @@ else
   echo "Erro configuracao do monitor"
 fi
 
+# Cores
+echo '
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #ffffff
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #ffffff
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #ffffff
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #ffffff
+' >> $config
+
+# Bar
+echo '
+bar {
+    status_command i3status
+    colors {
+            background $bg-color
+            separator #757575
+            #                  border             background         text
+            focused_workspace  $bg-color          $bg-color          $text-color
+            inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+            urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+    }
+}
+' >> $config
