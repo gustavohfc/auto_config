@@ -15,7 +15,7 @@ config=~/.i3/config
 # Configura as fontes
 cp *.ttf ~/.fonts/
 echo '
-font pango:System San Francisco Display 10
+font pango:SFNS Display 10
 ' > $config
 
 # Escreve as configuracoes padroes
@@ -334,4 +334,9 @@ bar {
             urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
     }
 }
+' >> $config
+
+# Lock (Windows+l)
+echo '
+bindsym Mod4+l exec i3lock --color "#222222"
 ' >> $config
