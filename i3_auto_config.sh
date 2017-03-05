@@ -11,6 +11,7 @@ fi
 
 maquina=$1
 config=~/.i3/config
+i3blocks_conf=~/.i3/i3blocks.conf
 
 # Configura as fontes
 cp *.ttf ~/.fonts/
@@ -324,7 +325,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # Bar
 echo '
 bar {
-    status_command i3status
+    status_command i3blocks -c '$i3blocks_conf'
     colors {
             background $bg-color
             separator #757575
@@ -333,6 +334,7 @@ bar {
             inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
             urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
     }
+    font pango: DejaVu Sans Mono 10
 }
 ' >> $config
 
@@ -340,3 +342,90 @@ bar {
 echo '
 bindsym Mod4+l exec i3lock --color "#222222"
 ' >> $config
+
+
+
+
+
+
+
+
+
+
+
+
+
+# -------------------------------------------------------------------------------------------
+# Configuracao do i3blocks
+
+echo '
+# Global properties
+#The top properties below are applied to every block, but can be overridden.
+#Each block command defaults to the script name to avoid boilerplate.
+command=/usr/local/libexec/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+' > $i3blocks_conf
+
+
+# Volume
+if [ "$maquina" == "note" ] || [ "$maquina" == "pc" ]; then
+  echo "
+[volume]
+label=♪
+instance=Master
+interval=1
+" >> $i3blocks_conf
+fi
+
+echo "
+[memory]
+label=MEM
+separator=false
+interval=30
+
+[memory]
+label=SWAP
+instance=swap
+separator=false
+interval=30
+
+[disk]
+label=HOME
+#instance=/mnt/data
+interval=30
+
+[iface]
+#instance=wlan0
+color=#00FF00
+interval=10
+separator=false
+
+[wifi]
+#instance=wlp3s0
+interval=10
+separator=false
+
+[bandwidth]
+#instance=eth0
+interval=5
+
+[cpu_usage]
+label=CPU
+interval=10
+min_width=CPU: 100.00%
+#separator=false
+
+#[load_average]
+#interval=10
+
+[battery]
+label=BAT
+#label=⚡
+#instance=1
+interval=30
+
+[time]
+command=date '+%d-%m-%Y %H:%M:%S'
+interval=10
+" >> $i3blocks_conf
