@@ -12,6 +12,11 @@ fi
 maquina=$1
 config=~/.i3/config
 
+# Configura as fontes
+cp *.ttf ~/.fonts/
+echo '
+font pango:System San Francisco Display 10
+' > $config
 
 # Escreve as configuracoes padroes
 echo '
@@ -28,7 +33,7 @@ echo '
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+####font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -194,7 +199,7 @@ bar {
 # Please remove the following exec line:
 #######################################################################
 exec i3-config-wizard
-' > $config
+' >> $config
 
 
 
@@ -299,3 +304,4 @@ elif [ "$maquina" == "note" ]; then
 else
   echo "Erro configuracao do monitor"
 fi
+
