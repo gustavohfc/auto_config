@@ -256,6 +256,8 @@ elif [ "$maquina" == "note" ] || [ "$maquina" == "pc" ]; then
   set $workspace9 "9"
   set $workspace10 "10"
   ' >> $config
+else
+  echo "Erro seleciona workspace"
 fi
 
 # Configura os nomes dos workspaces
@@ -285,3 +287,15 @@ bindsym Mod1+Shift+9 move container to workspace $workspace9
 bindsym Mod1+Shift+0 move container to workspace $workspace10
 ' >> $config
 
+# Configuracao do monitor (arandr)
+if [ "$maquina" == "pc" ]; then
+  echo "
+        exec_always xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off --output DVI-I-1 --off --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
+       " >> $config
+elif [ "$maquina" == "estagio" ]; then
+  echo "" >> $config
+elif [ "$maquina" == "note" ]; then
+  echo "" >> $config
+else
+  echo "Erro configuracao do monitor"
+fi
