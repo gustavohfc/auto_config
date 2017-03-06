@@ -299,7 +299,8 @@ if [ "$maquina" == "pc" ]; then
         exec_always xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off --output DVI-I-1 --off --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
        " >> $config
 elif [ "$maquina" == "estagio" ]; then
-  echo "" >> $config
+  echo "exec_always xrandr --output HDMI1 --mode 1366x768 --pos 1366x0 --rotate normal --output VIRTUAL1 --off --output VGA1 --primary --mode 1366x768 --pos 0x0 --rotate normal
+       " >> $config
 elif [ "$maquina" == "note" ]; then
   echo "" >> $config
 else
