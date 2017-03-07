@@ -58,7 +58,7 @@ echo '
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+Return exec gnome-terminal
 
 # kill focused window
 bindsym Mod1+Shift+q kill
