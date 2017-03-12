@@ -9,3 +9,6 @@ i3blocks/conf_old
 
 bashrc/home/.bashrc
 bashrc/conf_old
+
+tmux/home/.tmux.conf
+tmux/conf_old
