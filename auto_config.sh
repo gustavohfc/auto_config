@@ -30,6 +30,9 @@ do
   elif [ "$2" == "verify" ]; then
     echo -e "\n\n\nVerificando $i"
     bash ./verify.sh $i
+  elif [ "$2" == "copy" ]; then
+    echo -e "\n\n\nCopiando $i"
+    bash ./copy.sh $i
   else
     echo "Operacao invalida ($2) - $i"
   fi

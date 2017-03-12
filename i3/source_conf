@@ -295,7 +295,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # Bar
 bar {
-    status_command i3blocks -c '$i3blocks_conf'
+    status_command i3blocks -c ~/.i3/i3blocks.conf
     colors {
             background $bg-color
             separator #757575
@@ -310,4 +310,3 @@ bar {
 
 # Lock (Windows+l)
 bindsym Mod4+l exec i3lock --color "#222222"
-
