@@ -1,0 +1,21 @@
+[submodule "vim/home/.vim/bundle/vim-colors-solarized"]
+	path = vim/home/.vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/home/.vim/bundle/gruvbox"]
+	path = vim/home/.vim/bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "vim/home/.vim/bundle/nerdtree"]
+	path = vim/home/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/home/.vim/bundle/vim-cpp-enhanced-highlight"]
+	path = vim/home/.vim/bundle/vim-cpp-enhanced-highlight
+	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "vim/home/.vim/bundle/delimitMate"]
+	path = vim/home/.vim/bundle/delimitMate
+	url = http://github.com/Raimondi/delimitMate
+[submodule "vim/home/.vim/bundle/vim-indent-guides"]
+	path = vim/home/.vim/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides
+[submodule "vim/home/.vim/bundle/vim-trailing-whitespace"]
+	path = vim/home/.vim/bundle/vim-trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace
