@@ -6,3 +6,6 @@ vim/conf_old
 
 i3blocks/home/.i3/i3blocks.conf
 i3blocks/conf_old
+
+bashrc/home/.bashrc
+bashrc/conf_old
