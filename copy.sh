@@ -5,8 +5,8 @@ find $1/home/ -type d -print0 | while IFS= read -r -d '' diretorio
 do
   diretorio=`echo $diretorio | cut -f 1 -d / --complement | cut -f 1 -d / --complement`
   if [ -n "$diretorio" ]; then
-    if ! [ -d "$diretorio" ]; then
-      mkdir "$diretorio"
+    if ! [ -d ~/"$diretorio" ]; then
+      mkdir ~/"$diretorio"
     fi
   fi
 done
