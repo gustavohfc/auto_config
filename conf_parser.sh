@@ -24,7 +24,7 @@ done < $source_file
 
 
 # Substitui a configuracao
-if [ "`md5sum ~/"$conf_file_path" | cut -f 1 -d ' '`" != "`md5sum $2/home/"$conf_file_path" | cut -f 1 -d ' '`    " ]; then
+if [ "`md5sum ~/"$conf_file_path" | cut -f 1 -d ' '`" != "`md5sum $2/home/"$conf_file_path" | cut -f 1 -d ' '`" ]; then
   cp ~/"$conf_file_path" "$2"/conf_old
   cp "$2"/home/"$conf_file_path" ~/"$conf_file_path"
   echo "Arquivo de configuracao substituido"
