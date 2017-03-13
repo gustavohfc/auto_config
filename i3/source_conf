@@ -327,3 +327,6 @@ bindsym $sup+l exec i3lock --color "#222222"
 ##< note    >   bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 ##< note    >   bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
+
+# Network manager
+##< note    >   exec --no-startup-id nm-applet
