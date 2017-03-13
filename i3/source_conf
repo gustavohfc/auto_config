@@ -301,6 +301,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # Bar
 bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf
+    tray_padding 0
     colors {
             background $bg-color
             separator #757575
@@ -330,3 +331,8 @@ bindsym $sup+l exec i3lock --color "#222222"
 
 # Network manager
 ##< note    >   exec --no-startup-id nm-applet
+
+
+# Dropbox
+##< pc      >   exec --no-startup-id dropbox start
+##< note    >   exec --no-startup-id dropbox start
