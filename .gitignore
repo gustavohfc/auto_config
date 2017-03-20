@@ -12,3 +12,6 @@ bashrc/conf_old
 
 tmux/home/.tmux.conf
 tmux/conf_old
+
+zshrc/home/.zshrc
+zshrc/conf_old
