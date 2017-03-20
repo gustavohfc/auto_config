@@ -15,3 +15,14 @@ zshrc/home/.zshrc
 
 powerline_config/home/.config/powerline/config.json
 
+powerline_colors/home/.config/powerline/colors.json
+
+powerline_themes/home/.config/powerline/themes/powerline.json
+
+powerline_themes_shell/home/.config/powerline/themes/shell/shell_theme.json
+
+powerline_themes_tmux/home/.config/powerline/themes/tmux/tmux_theme.json
+
+powerline_themes_vim/home/.config/powerline/themes/vim/vim_theme.json
+
+
