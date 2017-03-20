@@ -1,17 +1,17 @@
-i3/conf_old
+conf_old
+
+
 i3/home/.i3/config
 
 vim/home/.vimrc
-vim/conf_old
 
 i3blocks/home/.i3/i3blocks.conf
-i3blocks/conf_old
 
 bashrc/home/.bashrc
-bashrc/conf_old
 
 tmux/home/.tmux.conf
-tmux/conf_old
 
 zshrc/home/.zshrc
-zshrc/conf_old
+
+powerline_config/home/.config/powerline/config.json
+
