@@ -88,3 +88,10 @@ source $ZSH/oh-my-zsh.sh
 
 
 . /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
+
+# Cor do resultado de comandos
+if [ -f ~/.dir_colors/dircolors ]
+    then eval `dircolors ~/.dir_colors/dircolors`
+fi
+
+
