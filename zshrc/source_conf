@@ -94,4 +94,7 @@ if [ -f ~/.dir_colors/dircolors ]
     then eval `dircolors ~/.dir_colors/dircolors`
 fi
 
+# Completa clicando TAB apenas uma vez
+setopt menu_complete
+
 
