@@ -4,10 +4,12 @@
 # Path to your oh-my-zsh installation.
   export ZSH=/home/gustavo/.oh-my-zsh
 
+POWERLEVEL9K_MODE='awesome-fontconfig'
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -87,14 +89,53 @@ source $ZSH/oh-my-zsh.sh
 
 
 
-. /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
+my_dir () {
+  local print_dir=${PWD#"$HOME/"}
+  if [ "$print_dir" = "$HOME" ] ; then
+    echo -n "~"
+    return
+  fi
+
+  local git_dir="$(git rev-parse --git-dir 2>/dev/null)"
+  if [ $git_dir ] ; then
+    local project_dir=`dirname $git_dir`
+    if [ $project_dir = "." ] ; then
+      return # Esta na raiz do projeto
+    fi
+    project_dir=${project_dir#"$HOME/"}
+    print_dir=${print_dir#"$project_dir"}
+  fi
+
+  if [[ "$print_dir" != "/"* ]] ; then
+    echo -n "~ "
+  fi
+
+  print_dir=${print_dir//"\/"/"  "}
+  echo -n $print_dir
+}
+
+
+# Configuracao do powerline9k #################################################################################################################
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs custom_dir root_indicator)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(dir_writable status root_indicator time background_jobs)
+
+# Configuracao do context
+##< note    >   DEFAULT_USER=gustavo
+##< pc      >   DEFAULT_USER=gustavo
+
+POWERLEVEL9K_CUSTOM_DIR="my_dir"
+POWERLEVEL9K_CUSTOM_DIR_BACKGROUND="0"
+POWERLEVEL9K_CUSTOM_DIR_FOREGROUND="white"
+
+
+###############################################################################################################################################
+
 
 # Cor do resultado de comandos
 if [ -f ~/.dir_colors/dircolors ]
     then eval `dircolors ~/.dir_colors/dircolors`
 fi
-
-# Completa clicando TAB apenas uma vez
-setopt menu_complete
 
 
