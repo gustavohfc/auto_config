@@ -53,7 +53,7 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git dnf pip python)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,11 +103,12 @@ my_dir () {
       return # Esta na raiz do projeto
     fi
     project_dir=${project_dir#"$HOME/"}
-    print_dir=${print_dir#"$project_dir"}
-  fi
-
-  if [[ "$print_dir" != "/"* ]] ; then
-    echo -n "~ "
+    print_dir=${print_dir#"$project_dir/"}
+  elif [[ "$print_dir" != "/"* ]] ; then
+    echo -n "~  "
+  else
+    echo -n "/  "
+    print_dir=${print_dir:1}
   fi
 
   print_dir=${print_dir//"\/"/"  "}
@@ -116,19 +117,28 @@ my_dir () {
 
 
 # Configuracao do powerline9k #################################################################################################################
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs custom_dir root_indicator)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(dir_writable status root_indicator time background_jobs)
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
+#POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%} "
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 # Configuracao do context
 ##< note    >   DEFAULT_USER=gustavo
 ##< pc      >   DEFAULT_USER=gustavo
 
+# Configuracao do custom_dir
 POWERLEVEL9K_CUSTOM_DIR="my_dir"
-POWERLEVEL9K_CUSTOM_DIR_BACKGROUND="0"
+POWERLEVEL9K_CUSTOM_DIR_BACKGROUND="10"
 POWERLEVEL9K_CUSTOM_DIR_FOREGROUND="white"
 
+# Configuracao do vcs
+POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+POWERLEVEL9K_VCS_HIDE_TAGS=true
+
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs custom_dir root_indicator)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(dir_writable background_jobs status)
 
 ###############################################################################################################################################
 
@@ -138,4 +148,7 @@ if [ -f ~/.dir_colors/dircolors ]
     then eval `dircolors ~/.dir_colors/dircolors`
 fi
 
+
+# Completa clicando TAB apenas uma vez
+setopt menu_complete
 

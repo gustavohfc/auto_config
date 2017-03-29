@@ -1,24 +1,12 @@
 " Inicia o Pathogen
 execute pathogen#infect()
 
-" Solarized options
-"syntax enable
-"let g:solarized_termcolors=256
-"if has('gui_running')
-"	set background=dark
-"else
-"	set background=dark
-"endif
-"if $COLORTERM == 'gnome-terminal'
-"	set t_Co=256
-"endif
-"colorscheme solarized
-
 " indent-guides
 set ts=2 sw=2 et
 
 " gruvbox
 syntax enable
+set termguicolors
 set background=dark
 colorscheme gruvbox
 
@@ -57,4 +45,7 @@ python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 set laststatus=2
-set t_Co=256
+
+" Auto-pair
+let g:AutoPairsFlyMode = 1
+
