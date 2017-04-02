@@ -2,7 +2,7 @@
 
 # Nome de todas aplicacoes q podem ser configuradas, deixar espaco no inicio e
 # no final da string.
-aplicacoes=" i3 vim i3blocks bashrc tmux zshrc powerline_config powerline_colors powerline_themes powerline_themes_shell powerline_themes_tmux powerline_themes_vim "
+aplicacoes=" i3 vim i3blocks bashrc tmux zshrc powerline_config powerline_colors powerline_themes powerline_themes_shell powerline_themes_tmux powerline_themes_vim dircolors "
 
 # Confere os parametros
 if [ "$#" -ne 3 ]; then

@@ -1,6 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Cor do comando ls
+export TERM=xterm-256color
+if [ -f ~/.dircolors ]
+    then eval `dircolors ~/.dircolors`
+fi
+
+
+# Gruvbox palette script
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
 # Path to your oh-my-zsh installation.
   export ZSH=/home/gustavo/.oh-my-zsh
 
@@ -142,11 +152,6 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(dir_writable background_jobs status)
 
 ###############################################################################################################################################
 
-
-# Cor do resultado de comandos
-if [ -f ~/.dir_colors/dircolors ]
-    then eval `dircolors ~/.dir_colors/dircolors`
-fi
 
 
 # Completa clicando TAB apenas uma vez
