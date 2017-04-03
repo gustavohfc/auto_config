@@ -1,5 +1,6 @@
 conf_old
 
+*.swp
 
 i3/home/.i3/config
 
@@ -25,4 +26,4 @@ powerline_themes_tmux/home/.config/powerline/themes/tmux/tmux_theme.json
 
 powerline_themes_vim/home/.config/powerline/themes/vim/vim_theme.json
 
-
+dircolors/home/.dircolors

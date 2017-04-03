@@ -7,9 +7,24 @@
 [submodule "vim/home/.vim/bundle/vim-cpp-enhanced-highlight"]
 	path = vim/home/.vim/bundle/vim-cpp-enhanced-highlight
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
-[submodule "vim/home/.vim/bundle/vim-indent-guides"]
-	path = vim/home/.vim/bundle/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides
 [submodule "vim/home/.vim/bundle/auto-pairs"]
 	path = vim/home/.vim/bundle/auto-pairs
 	url = git://github.com/jiangmiao/auto-pairs.git
+[submodule "vim/home/.vim/bundle/indentLine"]
+	path = vim/home/.vim/bundle/indentLine
+	url = https://github.com/Yggdroot/indentLine
+[submodule "vim/home/.vim/bundle/vim-airline"]
+	path = vim/home/.vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/home/.vim/bundle/vim-gitgutter"]
+	path = vim/home/.vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "vim/home/.vim/bundle/tagbar"]
+	path = vim/home/.vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule "vim/home/.vim/bundle/vim-fugitive"]
+	path = vim/home/.vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/home/.vim/bundle/nerdtree-git-plugin"]
+	path = vim/home/.vim/bundle/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin

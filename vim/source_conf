@@ -1,8 +1,14 @@
 " Inicia o Pathogen
 execute pathogen#infect()
 
-" indent-guides
-set ts=2 sw=2 et
+
+" indentLine
+let g:indentLine_char = '┆'
+let g:indentLine_indentLevel = 30
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_leadingSpaceEnabled = 1
+
 
 " gruvbox
 syntax enable
@@ -13,42 +19,90 @@ set termguicolors
 set background=dark
 colorscheme gruvbox
 
-" Autoindentation
-filetype indent on
 
 " Tab options
 set tabstop=2
 set softtabstop=2
+set shiftwidth=2
 set expandtab
 
-" Mostra o numero das linhas
+
+" Numeracao das linhas
 set number
+set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <leader>n :call NumberToggle()<cr>
+
 
 " Mostra o ultimo comando
 set showcmd
 
+
 " Destaca a linha do cursor
 set cursorline
+
 
 " Carrega a indentacao especifica de acordo com o tipo do arquivo
 filetype indent on
 
+
 " Visual autocomplete
 set wildmenu
 
+
 " Destaca o (){}[] correspondente
 set showmatch
+
 
 " Ruler
 set colorcolumn=81
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-" Powerline
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+
+" Airline
+let g:airline_powerline_fonts = 1
 set laststatus=2
+
+
+" Vim-gitguttet
+set updatetime=250
+
 
 " Auto-pair
 let g:AutoPairsFlyMode = 1
+let g:AutoPairsShortcutToggle = "<F2>p"
+let g:AutoPairsShortcutFastWrap = "<F2>e"
+let g:AutoPairsShortcutJump = "<F2>n"
+let g:AutoPairsShortcutBackInsert = "<F2>b"
 
+
+" Opcoes de busca
+set incsearch
+set hlsearch
+nnoremap <leader><space> :nohlsearch<CR>
+
+
+" Formato do cursor
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' |
+    \   silent execute '!echo -ne "\e[6 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[4 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
+
+" NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif " Abre o Nerdtree quando o vim eh iniciado sem nenhum arquivo
+map <F3> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Fecha o vim quando resta apenas a janela do NERDTree

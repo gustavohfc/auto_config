@@ -2,10 +2,10 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Cor do comando ls
-export TERM=xterm-256color
-if [ -f ~/.dircolors ]
-    then eval `dircolors ~/.dircolors`
-fi
+#export TERM=xterm-256color
+#if [ -f ~/.dircolors ]
+#    then eval `dircolors ~/.dircolors`
+#fi
 
 
 # Gruvbox palette script
@@ -130,7 +130,7 @@ my_dir () {
 #POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
 #POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%} "
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 # Configuracao do context
 ##< note    >   DEFAULT_USER=gustavo
