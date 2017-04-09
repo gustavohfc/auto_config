@@ -28,3 +28,18 @@
 [submodule "vim/home/.vim/bundle/nerdtree-git-plugin"]
 	path = vim/home/.vim/bundle/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+[submodule "vim/home/.vim/bundle/vim-better-whitespace"]
+	path = vim/home/.vim/bundle/vim-better-whitespace
+	url = https://github.com/ntpeters/vim-better-whitespace
+[submodule "vim/home/.vim/bundle/vim-indexed-search"]
+	path = vim/home/.vim/bundle/vim-indexed-search
+	url = https://github.com/henrik/vim-indexed-search
+[submodule "vim/home/.vim/bundle/vim-gutentags"]
+	path = vim/home/.vim/bundle/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags
+[submodule "vim/home/.vim/bundle/ctrlp.vim"]
+	path = vim/home/.vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
+[submodule "vim/home/.vim/bundle/YouCompleteMe"]
+	path = vim/home/.vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe

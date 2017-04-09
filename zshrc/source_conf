@@ -97,6 +97,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+# Usar o vimx no lugar do vim
+alias vi=vimx
+alias vim=vimx
 
 
 my_dir () {
