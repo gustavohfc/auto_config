@@ -151,7 +151,7 @@ POWERLEVEL9K_VCS_HIDE_TAGS=true
 
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs custom_dir root_indicator)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(dir_writable background_jobs status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv dir_writable background_jobs status)
 
 ###############################################################################################################################################
 
