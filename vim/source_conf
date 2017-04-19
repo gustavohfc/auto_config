@@ -1,13 +1,12 @@
 " Inicia o Pathogen
 execute pathogen#infect()
+execute pathogen#helptags()
 
 
 " indentLine
 let g:indentLine_char = '┆'
 let g:indentLine_indentLevel = 30
 let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_leadingSpaceEnabled = 1
 
 
 " gruvbox
@@ -49,6 +48,7 @@ set cursorline
 
 
 " Carrega a indentacao especifica de acordo com o tipo do arquivo
+filetype on
 filetype indent on
 
 
@@ -106,3 +106,31 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif " Abre o Nerdtree quando o vim eh iniciado sem nenhum arquivo
 map <F3> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Fecha o vim quando resta apenas a janela do NERDTree
+
+
+" Suporte para o mouse
+set mouse=a
+
+
+" Destaca TAB
+highlight SpecialKey ctermfg=RED
+set list
+set listchars=tab:T>
+
+
+" vim-indexed-search
+let g:indexed_search_max_lines = 5000
+
+
+" vim-gutentags
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_generate_on_new = 0
+
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+
+" Tagbar
+nnoremap <silent> <F4> :TagbarToggle<CR>

@@ -1,5 +1,7 @@
 conf_old
 
+tags
+
 *.swp
 
 i3/home/.i3/config
