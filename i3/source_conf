@@ -238,17 +238,6 @@ exec_always feh --bg-scale ~/.i3/wallpaper.jpg
 ##< note    >   set $workspace9 "9"
 ##< note    >   set $workspace10 "10"
 
-##< estagio >   set $workspace1 "1"
-##< estagio >   set $workspace2 "2"
-##< estagio >   set $workspace3 "3"
-##< estagio >   set $workspace4 "4"
-##< estagio >   set $workspace5 "5"
-##< estagio >   set $workspace6 "6"
-##< estagio >   set $workspace7 "7"
-##< estagio >   set $workspace8 "8"
-##< estagio >   set $workspace9 "9"
-##< estagio >   set $workspace10 "10"
-
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -279,7 +268,6 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 # Configuracao do monitor (arandr)
 ##< pc      >   exec_always xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off --output DVI-I-1 --off --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
 ##< note    >   
-##< estagio >   exec_always xrandr --output HDMI1 --mode 1366x768 --pos 1366x0 --rotate normal --output VIRTUAL1 --off --output VGA1 --primary --mode 1366x768 --pos 0x0 --rotate normal
 
 
 # Cores

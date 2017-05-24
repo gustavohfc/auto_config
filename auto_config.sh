@@ -8,7 +8,7 @@ aplicacoes=" i3 vim i3blocks tmux zshrc "
 if [ "$#" -ne 3 ]; then
   echo "USO: ./auto_config <maquina> <conf | verify | copy> <all | nome>."
   exit
-elif [ "$1" != "note" ] && [ "$1" != "estagio" ] && [ "$1" != "pc" ]; then
+elif [ "$1" != "note" ] && [ "$1" != "pc" ]; then
   echo "Maquina invalida."
   exit
 fi

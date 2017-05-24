@@ -138,7 +138,6 @@ my_dir () {
 # Configuracao do context
 ##< note    >   DEFAULT_USER=gustavo
 ##< pc      >   DEFAULT_USER=gustavo
-##< estagio >   DEFAULT_USER=gustavo.carvalho
 
 # Configuracao do custom_dir
 POWERLEVEL9K_CUSTOM_DIR="my_dir"
