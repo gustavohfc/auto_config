@@ -5,7 +5,7 @@
 
 function new_lines
 {
-  for i in $(seq 0 $1)
+  for i in $(seq 1 $1)
   do
     echo
   done
@@ -14,7 +14,7 @@ function new_lines
 
 function make_tabs
 {
-  for i in $(seq 0 $tabs)
+  for i in $(seq 1 $tabs)
   do
     echo -ne "\t"
   done
@@ -23,7 +23,7 @@ function make_tabs
 
 function print_error
 {
-  make_tabs
+  #make_tabs
   echo -e "${Red}ERROR: $message ${RCol}"
   if [ "$parameters" != 'not exit' ]; then
     exit 1
@@ -31,9 +31,18 @@ function print_error
 }
 
 
-function print_warning
+function print_parameters
 {
-  echo -e "${Yel}WARNING: $message ${RCol}"
+  new_lines 2
+  tabs=1
+
+  echo "Parametros:"
+  make_tabs; echo "Maquina = $maquina"
+  make_tabs; echo "Steps = $steps"
+  make_tabs; echo "only_verify = $only_verify"
+  make_tabs; echo "Backup files = $old_files_dir"
+
+  new_lines 2
 }
 
 
@@ -49,6 +58,17 @@ function print_help
   echo "    Lista de passos que o programa ira executar, os possiveis passos sao pre, main e pos, nao teve ter espacos no parametro"
   echo "    O valor padrao e' steps=pre,main,pos"
   echo
+}
+
+
+function print_script_output
+{
+  local IFS=$'\n'
+  for line in $message
+  do
+    make_tabs
+    echo -e "${Blu}$line ${RCol}"
+  done
 }
 
 
@@ -71,7 +91,7 @@ function ac_print
       ;;
 
     warning)
-      print_warning
+      echo -e "${Yel}WARNING: $message ${RCol}"
       ;;
 
     help)
@@ -79,15 +99,29 @@ function ac_print
       ;;
 
     script_output)
+      print_script_output
       ;;
 
     processing_file)
+      make_tabs
       echo "Processando o arquivo ${message#"$CONF_FILES_SOURCE"}:"
       ;;
 
-    executing_script)
-      echo -n "Executando o script ${message#'./'} ... "
+    executing)
+      make_tabs
+      echo -ne "$message ... "
       ;;
+
+    normal)
+      echo -e "$message"
+      ;;
+
+    parameters)
+      print_parameters
+      ;;
+
+    *)
+      echo -e "${Red}Comando invalido para o ac_print ${RCol}"
 
   esac
 }

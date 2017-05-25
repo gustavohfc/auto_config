@@ -3,3 +3,6 @@ tags
 
 teste/home/*
 !teste/home/.gitkeep
+
+old_files/*
+!old_files/.gitkeep

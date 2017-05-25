@@ -9,6 +9,7 @@ readonly CONF_FILES_SOURCE='./home/'
 #readonly CONF_FILES_DESTINATION='~/'
 readonly CONF_FILES_DESTINATION='./teste/home/'
 readonly PARSER_TEMP_FILE='/tmp/auto_config_temp_file_parser.tmp'
+readonly DIFF_FILE_NAME='DIFF'
 readonly VALID_STEPS=' pre main pos '
 readonly VALID_MAQUINAS=' pc note '
 
@@ -28,11 +29,19 @@ do
       if [ ! -z "$steps" ]; then
         ac_print 'error' "Steps definido duas vezes."
       fi
-      temp="${parametro#"steps="}"
+      local temp="${parametro#"steps="}"
       readonly steps=" ${temp//,/ } "
       if [ -z "$steps" ]; then
         ac_print 'error' "O parametro steps nao pode ser vazio."
       fi
+      ;;
+
+    only_verify)
+      readonly only_verify=true
+      ;;
+
+    show_diff)
+      readonly show_diff=true
       ;;
 
     *)
@@ -43,16 +52,14 @@ do
 done
 
 confere_parametros
+ac_print 'parameters'
 
-echo $steps
 if [ -z "${steps##*" pre "*}" ]; then
-  echo pre
   run_scripts 'pre'
 fi
 
 if [ -z "${steps##*" main "*}" ]; then
-  echo a
-  #main
+  main
 fi
 
 if [ -z "${steps##*" pos "*}" ]; then
