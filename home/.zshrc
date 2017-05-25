@@ -7,10 +7,6 @@
 #    then eval `dircolors ~/.dircolors`
 #fi
 
-
-# Gruvbox palette script
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
-
 # Path to your oh-my-zsh installation.
   export ZSH=$HOME/.oh-my-zsh
 
@@ -97,9 +93,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-# Usar o vimx no lugar do vim
-alias vi=vimx
-alias vim=vimx
+# Usar o nvim no lugar do vim
+alias vi=nvim
+alias vim=nvim
 
 
 my_dir () {
@@ -136,8 +132,7 @@ my_dir () {
 #POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 # Configuracao do context
-##< note    >   DEFAULT_USER=gustavo
-##< pc      >   DEFAULT_USER=gustavo
+DEFAULT_USER=gustavo
 
 # Configuracao do custom_dir
 POWERLEVEL9K_CUSTOM_DIR="my_dir"

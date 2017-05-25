@@ -1,3 +1,6 @@
+{{{ config_parser }}}
+
+
 set $mod Mod4
 
 
@@ -216,27 +219,35 @@ exec_always feh --bg-scale ~/.i3/wallpaper.jpg
 
 
 # Seleciona os nomes dos workspaces
-##< pc      >   set $workspace1 "1"
-##< pc      >   set $workspace2 "2"
-##< pc      >   set $workspace3 "3"
-##< pc      >   set $workspace4 "4"
-##< pc      >   set $workspace5 "5"
-##< pc      >   set $workspace6 "6"
-##< pc      >   set $workspace7 "7"
-##< pc      >   set $workspace8 "8"
-##< pc      >   set $workspace9 "9"
-##< pc      >   set $workspace10 "10"
+# {{{1 configuration only to (pc)
 
-##< note    >   set $workspace1 "1"
-##< note    >   set $workspace2 "2"
-##< note    >   set $workspace3 "3"
-##< note    >   set $workspace4 "4"
-##< note    >   set $workspace5 "5"
-##< note    >   set $workspace6 "6"
-##< note    >   set $workspace7 "7"
-##< note    >   set $workspace8 "8"
-##< note    >   set $workspace9 "9"
-##< note    >   set $workspace10 "10"
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
+
+# }}}1
+
+# {{{1 configuration only to (note)
+
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
+
+# }}}1
 
 
 # switch to workspace
@@ -266,8 +277,13 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 
 # Configuracao do monitor (arandr)
-##< pc      >   exec_always xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off --output DVI-I-1 --off --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
-##< note    >   
+# {{{1 configuration only to (pc)
+exec_always xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off --output DVI-I-1 --off --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
+# }}}1
+
+# {{{1 configuration only to (pc)
+# TODO
+# }}}1
 
 
 # Cores
@@ -304,22 +320,22 @@ bar {
 # Lock
 bindsym $mod+q exec i3lock --color "#222222"
 
-
+# {{{1 configuration only to (note)
 # Volume
-##< note    >   exec_always --no-startup-id amixer -D pulse sset Master 0 # Sempre que iniciar o i3 coloca o volume no mudo
-##< note    >   bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
-##< note    >   bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #increase sound volume
-
+exec_always --no-startup-id amixer -D pulse sset Master 0 # Sempre que iniciar o i3 coloca o volume no mudo
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #increase sound volume
 
 # Brilho da tela
-##< note    >   bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-##< note    >   bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Network manager
-##< note    >   exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
+# }}}1
 
 
 # Dropbox
-##< pc      >   exec --no-startup-id dropbox start
-##< note    >   exec --no-startup-id dropbox start
+# {{{1 configuration only to (pc, note)
+exec --no-startup-id dropbox start
+# }}}1

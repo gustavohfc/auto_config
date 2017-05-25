@@ -1,46 +1,60 @@
 #!/bin/bash
-
-# Nome de todas aplicacoes q podem ser configuradas, deixar espaco no inicio e
-# no final da string.
-aplicacoes=" i3 vim i3blocks tmux zshrc "
-
-# Confere os parametros
-if [ "$#" -ne 3 ]; then
-  echo "USO: ./auto_config <maquina> <conf | verify | copy> <all | nome>."
-  exit
-elif [ "$1" != "note" ] && [ "$1" != "pc" ]; then
-  echo "Maquina invalida."
-  exit
-fi
-
-if [[ $aplicacoes =~ " $3 " ]]; then
-  aplicacoes=$3
-elif [ "$3" != "all" ]; then
-  echo "Aplicacao invalida"
-  exit
-fi
+. scripts/functions.sh
+. scripts/shell_color.sh
+. scripts/print.sh
 
 
-# Configura todos as aplicacoes selecionadas
-for i in $aplicacoes
+readonly CONFIG_PARSER_FLAG='{{{ config_parser }}}'
+readonly CONF_FILES_SOURCE='./home/'
+#readonly CONF_FILES_DESTINATION='~/'
+readonly CONF_FILES_DESTINATION='./teste/home/'
+readonly PARSER_TEMP_FILE='/tmp/auto_config_temp_file_parser.tmp'
+readonly VALID_STEPS=' pre main pos '
+readonly VALID_MAQUINAS=' pc note '
+
+# Trata os parametros
+for parametro in "$@"
 do
-  if [ "$2" == "conf" ]; then
-    echo -e "\n\n\nConfigurando $i"
-    bash ./conf_parser.sh $1 $i
-  elif [ "$2" == "verify" ]; then
-    echo -e "\n\n\nVerificando $i"
-    bash ./verify.sh $i
-  elif [ "$2" == "copy" ]; then
-    echo -e "\n\n\nCopiando $i"
-    bash ./copy.sh $i
-  else
-    echo "Operacao invalida ($2) - $i"
-  fi
+  case "$parametro" in
 
-  if [ $? -ne 0 ]; then
-    echo ERRO
-    exit 1
-  fi
+    pc|note)
+      if [ ! -z "$maquina" ]; then
+        ac_print 'error' "Maquina definida duas vezes."
+      fi
+      readonly maquina="$parametro"
+      ;;
+
+    steps=*)
+      if [ ! -z "$steps" ]; then
+        ac_print 'error' "Steps definido duas vezes."
+      fi
+      temp="${parametro#"steps="}"
+      readonly steps=" ${temp//,/ } "
+      if [ -z "$steps" ]; then
+        ac_print 'error' "O parametro steps nao pode ser vazio."
+      fi
+      ;;
+
+    *)
+      ac_print 'help'
+      ac_print 'error' "Parametro desconhecido($parametro)"
+
+  esac
 done
 
-exit 0
+confere_parametros
+
+echo $steps
+if [ -z "${steps##*" pre "*}" ]; then
+  echo pre
+  run_scripts 'pre'
+fi
+
+if [ -z "${steps##*" main "*}" ]; then
+  echo a
+  #main
+fi
+
+if [ -z "${steps##*" pos "*}" ]; then
+  run_scripts 'pos'
+fi
