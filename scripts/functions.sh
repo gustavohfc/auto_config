@@ -50,11 +50,7 @@ function main
 
     # Faz o parser se necessario
     if [ "$(head -c ${#CONFIG_PARSER_FLAG} "$source_file_path")" == "$CONFIG_PARSER_FLAG" ]; then
-      ac_print 'executing' "${Yel}Executando o parser" '2'
-      #parser "$source_file_path"
-      #source_file_path="$PARSER_TEMP_FILE"
-      ac_print 'ok'
-      parsed_file="$PARSER_TEMP_FILE"
+      parser
     else
       parsed_file="$source_file_path"
     fi
@@ -133,7 +129,6 @@ function backup_old_file
 
 function verify
 {
-  set -x
   ac_print 'executing' 'Comparando os arquivos' '2'
 
   local md5_source=$(md5sum "$parsed_file" 2>/dev/null)
@@ -148,14 +143,13 @@ function verify
     return 1
   fi
 
-  if [ "$md5_source" == "$md5_destination" ]; then
+  if [ "${md5_source%% *}" == "${md5_destination%% *}" ]; then
     echo -e "${Gre}Aquivo ja atualizado. ${RCol}"
     return 0
   else
     echo -e "${Yel}Arquivo desatualizado. ${RCol}"
     return 1
   fi
-  set +x
 }
 
 
@@ -185,13 +179,44 @@ function make_path_file
 
 function parser
 {
-  echo a
-}
+  ac_print 'executing' "${Yel}Executando o parser" '2'
+
+  parsed_file="$PARSER_TEMP_FILE"
+
+  echo '' > "$parsed_file"
+  inside_optional_conf=false
+  force_print_line=false
+  while read line; do
+    # Procura o padrao "{{{"
+    if [[ "$line" == *"{{{"* ]]; then
+      if [[ "$line" == *"{{{ config_parser }}}"* ]]; then
+        continue
+      elif [[ "$line" == *"{{{ configuration only to"* ]]; then
+        force_print_line=true
+        inside_optional_conf=true
+        if [[ "$line" == *"$maquina"* ]]; then
+          conf_to_this_machine=true
+        else
+          conf_to_this_machine=false
+        fi
+      else
+        ac_print 'warning' "Padrao \"{{{\" invalido ($linha)." '4'
+      fi
+    #Procura o padrao "}}}"
+    elif [[ "$line" == *"}}}"* ]]; then
+      force_print_line=true
+      inside_optional_conf=false
+    fi
+
+    if [ "$force_print_line" = true ] || [ "$conf_to_this_machine" = true ] || [ "$inside_optional_conf" != true ]; then
+      echo "$line" >> "$parsed_file"
+    fi
+
+  done < "$source_file_path"
 
 
-function verifica_arquivo
-{
-  file="$1"
+  exit 1
+  ac_print 'ok'
 }
 
 

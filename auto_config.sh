@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 . scripts/functions.sh
 . scripts/shell_color.sh
 . scripts/print.sh

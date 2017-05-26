@@ -219,7 +219,7 @@ exec_always feh --bg-scale ~/.i3/wallpaper.jpg
 
 
 # Seleciona os nomes dos workspaces
-# {{{1 configuration only to (pc)
+# {{{ configuration only to (pc)
 
 set $workspace1 "1"
 set $workspace2 "2"
@@ -232,9 +232,9 @@ set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10"
 
-# }}}1
+# }}}
 
-# {{{1 configuration only to (note)
+# {{{ configuration only to (note)
 
 set $workspace1 "1"
 set $workspace2 "2"
@@ -247,7 +247,7 @@ set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10"
 
-# }}}1
+# }}}
 
 
 # switch to workspace
@@ -277,13 +277,13 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 
 # Configuracao do monitor (arandr)
-# {{{1 configuration only to (pc)
+# {{{ configuration only to (pc)
 exec_always xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --off --output DVI-I-1 --off --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
-# }}}1
+# }}}
 
-# {{{1 configuration only to (pc)
+# {{{ configuration only to (pc)
 # TODO
-# }}}1
+# }}}
 
 
 # Cores
@@ -320,7 +320,7 @@ bar {
 # Lock
 bindsym $mod+q exec i3lock --color "#222222"
 
-# {{{1 configuration only to (note)
+# {{{ configuration only to (note)
 # Volume
 exec_always --no-startup-id amixer -D pulse sset Master 0 # Sempre que iniciar o i3 coloca o volume no mudo
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
@@ -332,10 +332,10 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 
 # Network manager
 exec --no-startup-id nm-applet
-# }}}1
+# }}}
 
 
 # Dropbox
-# {{{1 configuration only to (pc, note)
+# {{{ configuration only to (pc, note)
 exec --no-startup-id dropbox start
-# }}}1
+# }}}
