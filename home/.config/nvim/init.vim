@@ -12,6 +12,9 @@
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'henrik/vim-indexed-search'
     Plug 'ntpeters/vim-better-whitespace'
+    Plug 'majutsushi/tagbar'
+    Plug 'tpope/vim-fugitive'
+    Plug 'vim-syntastic/syntastic'
 
     call plug#end()
 "}}}
@@ -72,9 +75,13 @@
         let g:airline_powerline_fonts = 1
         let g:airline_theme='onedark'
         set laststatus=2
+
+        let g:airline#extensions#tagbar#enabled = 1
+        let g:airline#extensions#tagbar#flags = 'f'
+        let g:airline#extensions#syntastic#enabled = 'f'
     "}}}
 
-    "{{{ vim-gitguttet
+    "{{{ gitgutter
         set updatetime=250
         let g:gitgutter_map_keys = 0
     "}}}
@@ -95,47 +102,83 @@
         let g:NERDTreeShowIgnoredStatus = 1 " Mostra arquivos ignorados, MUITO PESADO
     "}}}
 
-    "{{{ vim-indexed-search
+    "{{{ indexed-search
         let g:indexed_search_max_lines=6000
     "}}}
 
-    "{{{ vim-gutentagas
+    "{{{ gutentagas
         let g:gutentags_generate_on_new = 0
+    "}}}
+
+    "{{{ tagbar
+    "}}}
+
+    "{{{ syntastic
+        " Configuracao da statusline nao eh necessaria por causa do airline
+        "set statusline+=%#warningmsg#
+        "set statusline+=%{SyntasticStatuslineFlag()}
+        "set statusline+=%*
+
+        let g:syntastic_always_populate_loc_list = 1
+        let g:syntastic_auto_loc_list = 1
+        let g:syntastic_check_on_open = 1
+        let g:syntastic_check_on_wq = 0
     "}}}
 
 "}}}
 
 "{{{ Key map
-    let mapleader = "\<Space>"
+    let mapleader = '\'
+    nmap <Space> \
 
     "{{{ Minhas funcoes
         nnoremap <leader>n :call NumberToggle()<CR>
-        nnoremap <leader><space> :nohlsearch<CR>
+        nnoremap <leader>s :nohlsearch<CR>
+        nnoremap <leader>w :w<CR>
     "}}}
 
-    "{{{ vim-gitguttet
-        nmap ]h <Plug>GitGutterNextHunk
-        nmap [h <Plug>GitGutterPrevHunk
-        nmap <Leader>ha <Plug>GitGutterStageHunk
-        nmap <Leader>hr <Plug>GitGutterUndoHunk
-        nmap <Leader>hv <Plug>GitGutterPreviewHunk
-        omap ih <Plug>GitGutterTextObjectInnerPending
-        omap ah <Plug>GitGutterTextObjectOuterPending
-        xmap ih <Plug>GitGutterTextObjectInnerVisual
-        xmap ah <Plug>GitGutterTextObjectOuterVisual
+    "{{{ gitgutter
+        nnoremap <leader>h? :map <leader>h<CR>
+        nnoremap <Leader>hn <Plug>GitGutterNextHunk
+        nnoremap <Leader>hp <Plug>GitGutterPrevHunk
+        nnoremap <Leader>ha <Plug>GitGutterStageHunk
+        nnoremap <Leader>hu <Plug>GitGutterUndoHunk
+        nnoremap <Leader>hv <Plug>GitGutterPreviewHunk
+        nnoremap <Leader>hh :GitGutterLineHighlightsToggle<CR>
+        "onoremap ih <Plug>GitGutterTextObjectInnerPending
+        "onoremap ah <Plug>GitGutterTextObjectOuterPending
+        "xnoremap ih <Plug>GitGutterTextObjectInnerVisual
+        "xnoremap ah <Plug>GitGutterTextObjectOuterVisual
     "}}}
 
     "{{{ auto-pairs <F2>
+        nnoremap <F2>? :map <F2><CR>
         let g:AutoPairsShortcutToggle = '<F2>t'
         let g:AutoPairsShortcutFastWrap = '<F2>w'
         let g:AutoPairsShortcutJump = '<F2>j'
         let g:AutoPairsShortcutBackInsert = '<F2>u'
     "}}}
 
-    "{{{ nerd tree
+    "{{{ nerd tree <F3>
         noremap <F3> :NERDTreeToggle<CR>
     "}}}
 
+    "{{{ tagbar <F4>
+        nnoremap <F4> :TagbarToggle<CR>
+    "}}}
+
+    "{{{ fugitive
+        nnoremap <leader>g? :map <leader>g<CR>
+        nnoremap <leader>gb :Gblame<CR>
+        nnoremap <leader>gc :Gcommit<CR>
+        nnoremap <leader>gd :Gdiff<CR>
+        nnoremap <leader>gg :Ggrep<Space>
+        nnoremap <leader>gl :Glog<CR>
+        nnoremap <leader>gp :Git pull<CR>
+        nnoremap <leader>gP :Git push<CR>
+        nnoremap <leader>gs :Gstatus<CR>
+        nnoremap <leader>gw :Gbrowse<CR>
+    "}}}
 
 "}}}
 
