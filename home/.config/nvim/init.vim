@@ -15,6 +15,7 @@
     Plug 'majutsushi/tagbar'
     Plug 'tpope/vim-fugitive'
     Plug 'vim-syntastic/syntastic'
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 
     call plug#end()
 "}}}
@@ -123,6 +124,10 @@
         let g:syntastic_auto_loc_list = 1
         let g:syntastic_check_on_open = 1
         let g:syntastic_check_on_wq = 0
+    "}}}
+
+    "{{{ YouCompleteMe
+        let g:ycm_show_diagnostics_ui = 0
     "}}}
 
 "}}}
